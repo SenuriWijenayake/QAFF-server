@@ -274,6 +274,7 @@ exports.updateUser = function(data) {
 
 //Update user sessions
 exports.updateSession = function(data) {
+  console.log("User: " + data.userId);
   //If the session is new create session
   if (data.isStart == true) {
     return new Promise(function(resolve, reject) {
@@ -299,7 +300,8 @@ exports.updateSession = function(data) {
         upsert: false
       }, function(err, newAnswer) {
         if (err) reject(err);
-        resolve(newAnswer._id.toString());
+        resolve(true);
+        // resolve(newAnswer._id.toString());
       });
     });
   }
